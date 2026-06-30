@@ -12,6 +12,8 @@ Página web simples para visualizar o CRUD de produtos em um arquivo binário si
 
 Os dados são armazenados no LocalStorage somente como um vetor de números inteiros entre 0 e 255. Não existe vetor de objetos persistido. Inclusão, consulta, alteração e exclusão percorrem e modificam diretamente os bytes.
 
+![Tela principal do sistema](img/tela-principal.png)
+
 ## Arquivos
 
 - `index.html` — estrutura da página.
