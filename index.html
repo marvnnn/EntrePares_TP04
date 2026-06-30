@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="description" content="CRUD de produtos com visualização em bytes">
+	<title>Arquivo Vivo</title>
+	<link rel="stylesheet" href="styles.css?v=4">
+	<script src="app.js?v=4" defer></script>
+</head>
+<body>
+<main>
+		<section class="stats" aria-label="Estado do arquivo">
+			<article><strong id="stat-bytes">12</strong><span>bytes</span></article>
+			<article><strong id="stat-active">0</strong><span>ativos</span></article>
+			<article><strong id="stat-deleted">0</strong><span>excluídos</span></article>
+			<article><strong id="stat-next">1</strong><span>próximo ID</span></article>
+		</section>
+
+		<section id="crud">
+			<div class="title">
+				<div><small>CRUD EM ARQUIVO</small><h1>Produtos</h1></div>
+				<p>Os dados são salvos como um vetor de bytes no LocalStorage.</p>
+			</div>
+
+			<div class="crud-grid">
+				<form id="product-form" class="card">
+					<h2 id="form-title">Novo produto</h2>
+					<input type="hidden" id="product-id">
+
+					<label for="name">Nome</label>
+					<input id="name" maxlength="80" required placeholder="Café Especial">
+
+					<label for="category">Categoria</label>
+					<input id="category" maxlength="50" required placeholder="Alimentos">
+
+					<div class="row">
+						<div><label for="price">Preço (R$)</label><input id="price" type="number" min="0" step="0.01" required></div>
+						<div><label for="stock">Estoque</label><input id="stock" type="number" min="0" step="1" required></div>
+					</div>
+
+					<button class="primary" id="submit-button">Salvar produto</button>
+					<button class="secondary hidden" type="button" id="cancel-edit">Cancelar edição</button>
+					<p class="help" id="operation-note">O registro será gravado diretamente no vetor de bytes.</p>
+				</form>
+
+				<div class="card list">
+					<div class="list-head">
+						<h2>Produtos cadastrados</h2>
+						<input id="search" type="search" placeholder="Buscar por ID, nome ou categoria">
+					</div>
+					<div class="table-wrap">
+						<table>
+							<thead><tr><th>ID</th><th>Produto</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead>
+							<tbody id="product-rows"></tbody>
+						</table>
+						<p class="empty" id="empty-state">Nenhum produto cadastrado.</p>
+					</div>
+					<small id="result-count">0 produtos encontrados</small>
+				</div>
+			</div>
+		</section>
+
+		<section id="arquivo" class="file-section">
+			<div class="file-head">
+				<div><h2>Arquivo em bytes</h2><p>Os bytes são coloridos conforme o campo.</p></div>
+				<div><button class="secondary" id="compact-button">Compactar</button><button class="danger" id="reset-button">Limpar</button></div>
+			</div>
+
+			<div class="file-box">
+				<div class="simple-title"><h3>Registros</h3><span>Valores traduzidos</span></div>
+				<div id="decoded-records" class="decoded-list"></div>
+
+				<div class="simple-title"><h3>Vetor de bytes</h3><span id="file-size">12 bytes</span></div>
+				<div class="legend">
+					<span class="header-c">Cabeçalho</span><span class="tomb-c">Lápide</span><span class="length-c">Tamanho</span>
+					<span class="id-c">ID</span><span class="name-c">Nome</span><span class="category-c">Categoria</span>
+					<span class="price-c">Preço</span><span class="stock-c">Estoque</span>
+				</div>
+				<div id="byte-grid" class="bytes" aria-label="Bytes do arquivo"></div>
+
+				<div class="inspector" id="byte-inspector">
+					<span>Offset <b>0000</b></span><span>Decimal <b>0</b></span><span>Campo <b>Cabeçalho</b></span>
+					<p>Selecione um byte para ver seu significado.</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<div id="toast" class="toast" role="status"></div>
+	<footer>Projeto extensionista — AEDs III</footer>
+</body>
+</html>
