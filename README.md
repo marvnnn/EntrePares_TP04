@@ -63,3 +63,6 @@ O grupo ainda deve aplicar o roteiro com pelo menos 10 alunos, registrar as resp
 - **O código está funcionando?** Sim.
 - **O trabalho é original?** Sim.
 
+## 🎥 Vídeo de Demonstração
+
+https://youtu.be/wBSn35w8pNs
